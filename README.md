@@ -48,7 +48,9 @@ wp scaffold plugin-tests wpnoonce
 cd wp-content/plugins/wpnoonce
 bin/install-wp-tests.sh wptestphpunit wptest gsPZx5FZOT51T0jS localhost latest
 #if you've already ddbb created include skip parameter: bin/install-wp-tests.sh wptestphpunit wptest gsPZx5FZOT51T0jS localhost latest true
-composer run 
+cd $YOURLIBPATH/wpnoonce
+composer run test-wp
 ```
 
-For more information on testing wordpress plugins [read this post](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/).
+For more information on automated testing wordpress plugins 
+[read this post](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/).

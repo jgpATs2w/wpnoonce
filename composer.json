@@ -26,7 +26,8 @@
         }
     },
     "scripts": {
-        "test": "./vendor/bin/phpunit --bootstrap=tests/bootstrap.php tests/NonceTest.php",
+        "test": "./vendor/bin/phpunit --bootstrap=tests/bootstrap.nowp.php tests/NonceTest.php",
+        "test-wp": "./vendor/bin/phpunit --bootstrap=tests/bootstrap.wp.php tests/NonceWpTest.php",
         "phpcs": "vendor/bin/phpcs --standard=Inpsyde src/Nonce.php"
     }
 }

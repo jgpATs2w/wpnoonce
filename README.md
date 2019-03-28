@@ -1,51 +1,54 @@
-# WP_Nonce
-Wordpress plugin implementing wp_nonce_* functionality in OOP
+# WpNoonce
+Wordpress plugin implementing wp_nonce_* functionality in OOP.
+This repo has been created for testing proposes *DO NOT USE FOR PRODUCTION* and think that it will be unmaintained and may disapear.
 
- # Installation
- 
- Add the package to your composer
+ # Installation and QA/QC
+ To avoid pollution of packagist, the installation method will be manual.
+ First clone the repo:
+ ```
+cd $YOURLIBPATH
+git clone https://github.com/jgpATs2w/wpnoonce.git
+cd wpnoonce
+composer install
+composer run test
+composer run phpcs
+```
+
+# Usage
+
+Add the package to your composer
  ```composer
 "repositories":[
     ...
-    {
-      "type":"package",
-      "package": {
-        "name": "jgpats2w/wpnonce",
-        "version":"master",
-        "source": {
-          "url": "https://github.com/jgpATs2w/WpNonce.git",
-          "type": "git",
-          "reference":"master"
-        }
-      }
-    }
-  ]
+    {"type": "path", "url":"$YOURLIBPATH/wpnoonce/"}]
 ```
-
+Ensure composer autoload is present in wp-config.php
  ```
-
+require_once '/vendor/autoload.php';
 ```
-
+Now you're ready to use WpNoonce:
+```
+$wpNonce= new Jgpats2w\WpNoonce\Nonce();
+```
 
 ## Testing
 
 For unit testing, simply install phpunit and run test:
 ```
-cd $WP_PATH/wp-content/plugins
 composer install
 comporer run test
 ```
 
-For integration testing, [wp-cli](http://wp-cli.org/) is required. Once wp is installed::
+For integration testing, [wp-cli](http://wp-cli.org/) is required. Considering you've a Wordpress installation
+in `$WP_PATH`:
 ```
 cd $WP_PATH
-wp scaffold plugin-tests wp_nonce
-# type 'r' twice to replace default test configuration files
-cd wp-content/plugins/wp_nonce
+wp scaffold plugin-tests wpnoonce
+# type 'r' to replace default test configuration files
+cd wp-content/plugins/wpnoonce
 bin/install-wp-tests.sh wptestphpunit wptest gsPZx5FZOT51T0jS localhost latest
 #if you've already ddbb created include skip parameter: bin/install-wp-tests.sh wptestphpunit wptest gsPZx5FZOT51T0jS localhost latest true
-phpunit tests/WPNonceTest.php
-
+composer run 
 ```
 
 For more information on testing wordpress plugins [read this post](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/).

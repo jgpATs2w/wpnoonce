@@ -54,3 +54,9 @@ composer run test-wp
 
 For more information on automated testing wordpress plugins 
 [read this post](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/).
+
+#  Decisions
+The code structure is very basic, a simple class that allows sharing arguments betweent the different functions. I have not seeing the need to use any design
+pattern.  
+I've focused in TDD and code quality, preparing the environment to run automated unit and integration tests, and to continously check and fix deviations from
+the coding standars (thanks to intellij+phpcs).

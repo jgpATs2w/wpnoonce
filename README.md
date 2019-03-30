@@ -40,14 +40,16 @@ comporer run test
 ```
 
 For integration testing, [wp-cli](http://wp-cli.org/) is required. Considering you've a Wordpress installation
-in `$WP_PATH`:
+in `$WP_PATH`, a database user $DB_USER:$DB_PASS:
 ```
 cd $WP_PATH
+mkdir wp-content/plugins/wpnoonce
 wp scaffold plugin-tests wpnoonce
-# type 'r' to replace default test configuration files
+# Type 'r' to replace default test configuration files
 cd wp-content/plugins/wpnoonce
-bin/install-wp-tests.sh wptestphpunit wptest gsPZx5FZOT51T0jS localhost latest
-#if you've already ddbb created include skip parameter: bin/install-wp-tests.sh wptestphpunit wptest gsPZx5FZOT51T0jS localhost latest true
+bin/install-wp-tests.sh wptestphpunit $DB_USER $DB_PASS localhost latest
+# If you've already ddbb created include skip parameter: ... localhost latest true
+ 
 cd $YOURLIBPATH/wpnoonce
 composer run test-wp
 ```
